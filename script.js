@@ -1,10 +1,34 @@
 let today = new Date();
 let year = today.getFullYear();
-let month = String(today.getMonth() + 1).padStart(2, '0');
-let date = String(today.getDate()).padStart(2,"0");
-let day = `${year}-${month}-${date}`
+let month = String(today.getMonth() + 1).padStart(2, "0");
+let date = String(today.getDate() - 1).padStart(2, "0");
+let currentDate = `${year}-${month}-${date}`;
 
 // console.log(today);console.log(year);console.log(month);console.log(date);console.log(day);console.log(typeof(day));
 
 // const currentDate = new Date().toISOString().split("T")[0];
 // console.log(currentDate, typeof(currentDate))
+
+myApi = "x4gNI41nJcyl9Td22o5wlRCTR0AGkVYdaLc5LTcN";
+
+let currentImgContainer = document.getElementById("current-img-container");
+
+// fetch(`https://api.nasa.gov/planetary/apod?api_key=${myApi}&date=${currentDate}`)
+//     .then((response) => response.json())
+//     .then((data) => console.log(data));
+
+getCurrentImageOfTheDay();
+
+function getCurrentImageOfTheDay() {
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${myApi}&date=${currentDate}`)
+        .then((response) => response.json())
+        .then((data) => {
+            currentImgContainer.innerHTML = `
+            <h1>NASA Picture Of The Day</h1>
+            <img src = "${data.url}" alt ="NASA Image">
+            <h3>${data.title}</h3>
+            <p>${data.explanation}</p>
+            `;
+        })
+        .catch((error) => console.error("Error fetching current image", error));
+}
