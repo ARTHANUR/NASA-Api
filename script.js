@@ -69,8 +69,17 @@ function addSearchToHistory(searchedDate) {
     let list = document.createElement("li");
     list.textContent = searchedDate;
     list.addEventListener("click", () => {
-        getImageOfTheDay(searchedDate);
-        this.remove();
+        fetch(`https://api.nasa.gov/planetary/apod?api_key=${myApi}&date=${searchedDate}`)
+            .then((response) => response.json())
+            .then((data) => {
+                currentImgContainer.innerHTML = `
+            <h1>NASA Picture On ${searchedDate}</h1>
+            <img src = "${data.url}" alt ="NASA Image">
+            <h3>${data.title}</h3>
+            <p>${data.explanation}</p>
+            `;
+            })
+            .catch((error) => console.error("unable to load the image", error));
     });
     searchHistory.appendChild(list);
 }
