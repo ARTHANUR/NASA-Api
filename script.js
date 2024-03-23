@@ -52,6 +52,25 @@ function getImageOfTheDay(searchedDate) {
             <h3>${data.title}</h3>
             <p>${data.explanation}</p>
             `;
+            addSearchToHistory(searchedDate);
+            saveSearch(searchedDate);
         })
         .catch((error) => console.error("unable to load the image", error));
+}
+
+function saveSearch(searchedDate) {
+    let searches = JSON.parse(localStorage.getItem("searches")) || [];
+    searches.push(searchedDate);
+    localStorage.setItem("searches", JSON.stringify(searches));
+}
+
+function addSearchToHistory(searchedDate) {
+    let searchHistory = document.getElementById("search-history");
+    let list = document.createElement("li");
+    list.textContent = searchedDate;
+    list.addEventListener("click", () => {
+        getImageOfTheDay(searchedDate);
+        this.remove();
+    });
+    searchHistory.appendChild(list);
 }
