@@ -32,3 +32,26 @@ function getCurrentImageOfTheDay() {
         })
         .catch((error) => console.error("Error fetching current image", error));
 }
+
+let searchForm = document.getElementById("search-form");
+let searchInput = document.getElementById("search-input");
+let btn = document.getElementById("btn");
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let searchedDate = searchInput.value;
+    getImageOfTheDay(searchedDate);
+});
+
+function getImageOfTheDay(searchedDate) {
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${myApi}&date=${searchedDate}`)
+        .then((response) => response.json())
+        .then((data) => {
+            currentImgContainer.innerHTML = `
+            <h1>NASA Picture On ${searchedDate}</h1>
+            <img src = "${data.url}" alt ="NASA Image">
+            <h3>${data.title}</h3>
+            <p>${data.explanation}</p>
+            `;
+        })
+        .catch((error) => console.error("unable to load the image", error));
+}
