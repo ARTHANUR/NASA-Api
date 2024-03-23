@@ -1,0 +1,116 @@
+body {
+    background-image: url(https://res.cloudinary.com/dboa7dqkl/image/upload/v1711192473/NASA-Api/pexels-pixabay-76969_eawrnu.jpg);
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 3rem;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+
+#current-img-container {
+    margin: auto;
+    width: 40%;
+    padding:0 3%;
+    background-color: rgba(100, 100, 100, 0.3);
+    box-shadow: 40px 50px 60px rgba(0, 0, 0, 0.349);
+    backdrop-filter: blur(10px);
+    text-align:center;
+    border-radius: 10px;
+
+}
+
+#current-img-container>img {
+    width: 90%;
+    height: 30rem;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+#current-img-container>h1{
+    color: rgba(240, 255, 255, 0.546);
+}
+
+#current-img-container>h3{
+    font-size: x-large;
+}
+
+div:first-of-type{
+    width: 30%;
+    margin-left: auto;
+    
+}
+
+input{
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgba(245, 245, 245, 0.503);
+    width: 50%;
+    height: 3rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+    
+}
+
+button{
+    cursor: pointer;
+    width: 20%;
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 550;
+    background-color: rgba(255, 255, 255, 0.621);
+    color: black;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transform: translate(10% , 0);
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.3);
+}
+
+li{
+    width: 50%;
+    max-height: 2rem;
+    background-color: rgba(233, 227, 227, 0.94);
+    box-shadow: 40px 50px 60px rgba(0, 0, 0, 0.349);
+    backdrop-filter: blur(10px);
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
+    border: none;
+    border-radius: 18px;
+    margin-top: 2rem;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    list-style: none;
+    max-height: 80vh;
+    overflow-y: hidden;
+    overflow-y: scroll;
+}
+
+ul::-webkit-scrollbar{
+    display: none;
+}
+
+div:first-of-type>h1{
+    color: rgba(240, 255, 255, 0.546);
+    font-weight: 400;
+    font-size: 1.5rem;
+    
+}
