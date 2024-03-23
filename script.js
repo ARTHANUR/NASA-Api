@@ -17,7 +17,7 @@ let currentImgContainer = document.getElementById("current-img-container");
 //     .then((response) => response.json())
 //     .then((data) => console.log(data));
 
-getCurrentImageOfTheDay();
+window.onload = getCurrentImageOfTheDay();
 
 function getCurrentImageOfTheDay() {
     fetch(`https://api.nasa.gov/planetary/apod?api_key=${myApi}&date=${currentDate}`)
